@@ -164,7 +164,7 @@ Some ways to improve this deployment:
 
 ## System Diagram
 
-[Deployment3.drawio.pdf](https://github.com/belindadunu/jenkins-eb-deploy/files/12640763/Deployment3.drawio.pdf)
+![Deployment3 drawio](https://github.com/belindadunu/jenkins-eb-deploy/assets/139175163/ea010aec-6b89-4992-814d-cdc0d7e6cc64)
 
 ## Conclusion
 
