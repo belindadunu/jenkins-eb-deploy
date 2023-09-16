@@ -151,7 +151,7 @@ The webhook enabled CI/CD by running the pipeline on code changes.
 
 ### Missing EB CLI 
 
-- First pipeline builds failed because I forgot to include eb CLI commands
+- The first pipeline build failed because I forgot to include EB CLI commands
   - Added `eb deploy` commands to Jenkinsfile to deploy to Elastic Beanstalk
 
 ## Optimization
@@ -160,13 +160,12 @@ Some ways to improve this deployment:
 
 - Use a Docker container to encapsulate the Jenkins environment
 - Implement infrastructure-as-code with Terraform to provision AWS resources
-- Add automated testing like unit and integration tests in the pipeline  
 - Set up monitoring and alerts for the Elastic Beanstalk environment
-- Enable auto-scaling to dynamically scale capacity based on demand
 
 ## System Diagram
 
+[Deployment3.drawio.pdf](https://github.com/belindadunu/jenkins-eb-deploy/files/12640763/Deployment3.drawio.pdf)
 
 ## Conclusion
 
-This project implemented a full CI/CD pipeline using Jenkins, GitHub, and Elastic Beanstalk. Code changes trigger automatic builds, and the application is deployed to AWS on each successful build. Overall, the pipeline streamlines delivery of this application!
+This project implemented a full CI/CD pipeline using Jenkins, GitHub, and Elastic Beanstalk. Code changes trigger automatic builds, and the application is deployed to AWS on each successful build. Overall, the pipeline streamlines the delivery of this application!
