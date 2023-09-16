@@ -6,7 +6,7 @@ In this project, we will create a Jenkins pipeline that builds, tests, and packa
 
 We will use an EC2 instance as the virtual machine to run Jenkins to achieve this. We'll install Jenkins and its dependencies to execute the pipeline. After the code builds successfully, the pipeline will automatically deploy the application to Elastic Beanstalk. 
 
-**Please note: Many of the steps below have guided instructions on how to re-create the environment setup below. Check out my previous projects in my repositories for more.**
+**Please note: Many of the steps below have guided instructions on how to re-create the environment setup below. Check out my previous projects in my [repositories](https://github.com/belindadunu?tab=repositories) for more.**
 
 ### Requirements
 
@@ -74,14 +74,38 @@ To enable automated Elastic Beanstalk deployments:
 
 2. Configure AWS credentials in Jenkins.
 
-3. You'll need access keys in order to be able to run `aws configure` and install [`AWS EB CLI`](https://scribehow.com/shared/How_to_install_AWS_EB_CLI__J6eBRB9FQl2fGenfUVemlA).
+3. You'll need access keys in order to be able to run [`aws configure`](https://scribehow.com/shared/How_to_Install_AWS_CLI__1MnhqmpcRxupkx_F-EcreQ) and install [`AWS EB CLI`](https://scribehow.com/shared/How_to_install_AWS_EB_CLI__J6eBRB9FQl2fGenfUVemlA).
 
 4. Once you `cd` into your jenkins workspace, you should see your multibranch pipeline name. CD into your multibranch pipeline name.
 
 <img width="665" alt="Screen Shot 2023-09-15 at 10 12 05 PM" src="https://github.com/belindadunu/jenkins-eb-deploy/assets/139175163/2fdc1af0-11e7-4893-a3c1-33e1ac0dc310">
 <img width="665" alt="Screen Shot 2023-09-15 at 10 13 44 PM" src="https://github.com/belindadunu/jenkins-eb-deploy/assets/139175163/a56ba0c4-1a66-4852-9b8b-859ba54f159a">
 
-5. 
+5. Once you've CD into your multibranch pipeline name, run `eb init` and select the following:
+
+- `us-east-1`
+
+- `press enter`
+
+- `Python version 3.9`
+
+- `"n" for code commit`
+
+- `"n" for ssh`
+
+6. Next run `eb create`and then enter the below answers:
+
+- `press enter`
+
+- `press enter`
+
+- `press enter`
+
+- `"n" for spot fleet`
+
+7. Once EB finishes, you can see the application URL on the third to last line (Application available at URL)!
+
+<img width="1142" alt="Screen Shot 2023-09-15 at 10 29 35 PM" src="https://github.com/belindadunu/jenkins-eb-deploy/assets/139175163/4b1e3ff6-7d44-4645-9349-2cfc5760ded2">
 
 Once this step is completed, head back to your GitHub repo. Update the Jenkins file to include:
 `    stage('Deploy') {
