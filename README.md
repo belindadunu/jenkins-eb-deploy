@@ -45,10 +45,10 @@ Next, we'll install Jenkins on the EC2 instance:
 - sudo apt install python3.10-venv
 
 #### Install python-pip
-sudo apt install python3-pip
+- sudo apt install python3-pip
 
 #### Install unzip 
-sudo apt install unzip
+- sudo apt install unzip
 
 ### Create Jenkins Pipeline
 
