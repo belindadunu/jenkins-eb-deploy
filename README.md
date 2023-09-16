@@ -81,7 +81,7 @@ To enable automated Elastic Beanstalk deployments:
 <img width="665" alt="Screen Shot 2023-09-15 at 10 12 05 PM" src="https://github.com/belindadunu/jenkins-eb-deploy/assets/139175163/2fdc1af0-11e7-4893-a3c1-33e1ac0dc310">
 <img width="665" alt="Screen Shot 2023-09-15 at 10 13 44 PM" src="https://github.com/belindadunu/jenkins-eb-deploy/assets/139175163/a56ba0c4-1a66-4852-9b8b-859ba54f159a">
 
-5. Once you've CD into your multibranch pipeline name, run `eb init` and select the following:
+5. Once you cd into your multibranch pipeline name, run `eb init` and select the following:
 
 - `us-east-1`
 
