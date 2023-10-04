@@ -35,7 +35,7 @@ First, we'll set up the virtual environment to run Jenkins:
 
 Next, we'll install Jenkins on the EC2 instance:
 
-1. Install Jenkins, and prerequisites like Java, Python, etc. Follow the [Jenkins documentation](https://www.jenkins.io/doc/book/installing/linux/#prequisites) for installing these dependencies.
+1. Install Jenkins, and prerequisites like Java 8 or 11, Python, etc. Follow the [Jenkins documentation](https://www.jenkins.io/doc/book/installing/linux/#prequisites) for installing these dependencies.
 
 2. Use the below commands to install python3.10-venv, python-pip, and unzip on Ubuntu:
 
@@ -69,9 +69,9 @@ We can now create our CI/CD pipeline in Jenkins:
 
 To enable automated Elastic Beanstalk deployments:
 
-1. Install AWS CLI on the server by following the [installation steps](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html).
+1. Install AWS CLI on Jenkins server by following the [installation steps](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html).
 
-2. Configure AWS credentials in Jenkins using an IAM user with permission to deploy to Elastic Beanstalk. See the credentials setup guide.
+2. Configure AWS credentials in Jenkins using an IAM user with permissions to deploy to Elastic Beanstalk. See the credentials setup guide.
 
 3. You'll need access keys in order to be able to run commands like [`aws configure`](https://scribehow.com/shared/How_to_Install_AWS_CLI__1MnhqmpcRxupkx_F-EcreQ).
 4. Install [`AWS EB CLI`](https://scribehow.com/shared/How_to_install_AWS_EB_CLI__J6eBRB9FQl2fGenfUVemlA).
@@ -127,13 +127,13 @@ A webhook allows GitHub to notify Jenkins whenever code is pushed to the reposit
 3. Add `Click "Webhooks` 
 4. Set the Payload URL to the Jenkins hook address.
 5. Click `Recent Deliveries` and ensure you see a 200 response code.
-6. Click on the `Hash` for the following 200 response code.
+6. Click on the `Hash` to see the following 200 response code.
 
 <img width="1414" alt="Screen Shot 2023-09-16 at 12 10 20 AM" src="https://github.com/belindadunu/jenkins-eb-deploy/assets/139175163/ddb70cee-35bd-46a6-aaaa-4c55b5bcbd2e">
 
 ### Make a Code Change
 
-Push a small change to GitHub. If successful, this should trigger a Jenkins build, which will deploy the change automatically to Elastic Beanstalk.
+Push a small change to GitHub. This should trigger a Jenkins build, which will deploy the change automatically to Elastic Beanstalk if successful.
 
 I updated the `page_not_found.html` file, added **'So sorry!'**, and pushed the change to GitHub.
 
@@ -147,9 +147,9 @@ The webhook enabled CI/CD by running the pipeline on code changes.
 
 ### Elastic Beanstalk Permissions
 
-- I encountered an "unable to assume role" error during the Elastic Beanstalk deployment.
-- This caused my application to reflect a "degraded" health status.
-- I had to reconfigure and add the AWSElasticBeanstalkEnhancedHealth managed policy to the IAM role in order to resolve this.
+- Encountered "Role assumption" errors during Elastic Beanstalk deployment
+- This caused my application to reflect a "deprecated" health status.
+- I had to add the AWSElasticBeanstalkEnhancedHealth managed policy to the IAM role for Jenkins to resolve this.
 
 ## Optimization
 
@@ -166,4 +166,4 @@ _Diagram shows GitHub webhook triggering Jenkins pipeline that builds, tests, an
 
 ## Conclusion
 
-This project implemented a complete CI/CD pipeline using Jenkins, GitHub, and Elastic Beanstalk. Code changes trigger automatic builds, and the application is deployed to AWS on each successful build. Overall, the pipeline streamlines the delivery of this application!
+This project implemented a full CI/CD pipeline using Jenkins, GitHub, and Elastic Beanstalk. Code changes trigger automatic builds, and the application is deployed to AWS on each successful build. Overall, the pipeline streamlines the delivery of this application!
